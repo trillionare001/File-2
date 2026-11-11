@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Share your interests and start exploring study opportunities with ScholarBridge Kenya." />
+  <title>Get Started | ScholarBridge Kenya</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="ScholarBridge Kenya home">
+      <span class="brand-mark">✦</span>
+      <span>ScholarBridge <b>Kenya</b></span>
+    </a>
+    <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="scholarships.html">Scholarships</a>
+      <a href="how-it-works.html">How it works</a>
+      <a href="about.html">About</a>
+      <a href="faq.html">FAQ</a>
+      <a class="nav-apply active" href="apply.html" aria-current="page">Apply now <span>↗</span></a>
+    </nav>
+  </header>
+  <main>
+    <section class="apply-section">
+      <div class="apply-copy">
+        <span class="eyebrow">YOUR JOURNEY STARTS HERE</span>
+        <h1>Complete your scholarship profile</h1>
+        <p>Follow three simple steps to outline your details, study preferences and supporting documents.</p>
+        <div class="apply-points">
+          <span>01 — Your contact details</span>
+          <span>02 — Your study preferences</span>
+          <span>03 — Your supporting documents</span>
+        </div>
+      </div>
+      <div class="application-panel">
+        <div class="privacy-notice" role="note">
+          <strong>Privacy notice:</strong> Submissions are stored in your Supabase project. Uploaded CVs and transcripts are private; this form does not request ID numbers or identity-document copies.
+        </div>
+        <ol class="application-progress" aria-label="Application steps">
+          <li class="is-current" aria-current="step"><span>1</span><small>Your details</small></li>
+          <li><span>2</span><small>Study preferences</small></li>
+          <li><span>3</span><small>Documents</small></li>
+        </ol>
+        <p class="wizard-error configuration-error" id="supabase-config-error" role="alert" hidden></p>
+        <form class="apply-form" id="interest-form" novalidate>
+          <section class="application-step" data-step="0" aria-labelledby="step-title-1">
+            <p class="step-number">STEP 1 OF 3</p>
+            <h2 id="step-title-1" tabindex="-1">Your details</h2>
+            <p class="step-description">Start with the best way to identify and contact you.</p>
+            <label for="full-name">Full name</label>
+            <input id="full-name" name="name" type="text" autocomplete="name" placeholder="Enter your full name" required>
+            <label for="email">Email address</label>
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+            <label for="phone">Phone number <span class="optional-label">Optional</span></label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+254">
+          </section>
+          <section class="application-step" data-step="1" aria-labelledby="step-title-2" hidden>
+            <p class="step-number">STEP 2 OF 3</p>
+            <h2 id="step-title-2" tabindex="-1">Study preferences</h2>
+            <p class="step-description">Tell us what kind of study opportunity you are looking for.</p>
+            <label for="field">Area of expertise</label>
+            <select id="field" name="field" required>
+              <option value="">Select your field</option>
+              <option>Information Technology</option>
+              <option>Engineering</option>
+              <option>Health Sciences</option>
+              <option>Business &amp; Finance</option>
+              <option>Natural Sciences</option>
+              <option>Arts &amp; Humanities</option>
+              <option>Other</option>
+            </select>
+            <label for="level">Preferred study level</label>
+            <select id="level" name="level" required>
+              <option value="">Select study level</option>
+              <option>Undergraduate</option>
+              <option>Postgraduate / Master's</option>
+              <option>PhD</option>
+              <option>Professional development</option>
+            </select>
+            <label for="course">Preferred course or programme <span class="optional-label">Optional</span></label>
+            <input id="course" name="course" type="text" placeholder="For example, environmental science">
+            <label for="destination">Preferred study destination <span class="optional-label">Optional</span></label>
+            <input id="destination" name="destination" type="text" placeholder="Country or region">
+          </section>
+          <section class="application-step" data-step="2" aria-labelledby="step-title-3" hidden>
+            <p class="step-number">STEP 3 OF 3</p>
+            <h2 id="step-title-3" tabindex="-1">Supporting documents</h2>
+            <p class="step-description">Add your CV or transcript if available. Check the scholarship provider's instructions for required documents.</p>
+            <label for="cv">CV or résumé <span class="optional-label">Optional</span></label>
+            <input id="cv" name="cv" type="file" accept=".pdf,.doc,.docx">
+            <p class="field-help">PDF, DOC or DOCX; maximum 5 MB.</p>
+            <label for="transcript">Academic transcript <span class="optional-label">Optional</span></label>
+            <input id="transcript" name="transcript" type="file" accept=".pdf,.doc,.docx">
+            <p class="field-help">PDF, DOC or DOCX; maximum 5 MB.</p>
+          </section>
+          <p class="wizard-error" role="alert" hidden></p>
+          <div class="wizard-controls">
+            <button class="button button-secondary" type="button" data-step-back hidden>Back</button>
+            <button class="button button-primary" type="button" data-step-next>Save and continue <span>→</span></button>
+            <button class="button button-primary" type="submit" data-step-submit hidden>Submit interest <span>→</span></button>
+          </div>
+          <p class="submission-status" role="status" aria-live="polite"></p>
+          <p class="form-note">This interest form is not an official scholarship application. Check the provider's requirements and submit official applications through its own channel. Do not upload identity documents.</p>
+        </form>
+        <div class="application-complete" id="application-complete" role="status" hidden>
+          <span class="completion-mark" aria-hidden="true">✓</span>
+          <h2 tabindex="-1">Interest submitted</h2>
+          <p>Your completed interest and document references were saved to the connected Supabase project. Uploaded documents are private and cannot be viewed through this website. Use the scholarship provider's official channel for formal applications.</p>
+          <a class="button button-primary" href="scholarships.html">Explore study fields <span>→</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <a class="brand footer-brand" href="index.html"><span class="brand-mark">✦</span><span>ScholarBridge <b>Kenya</b></span></a>
+    <p>Empowering Kenyan talent for a world of opportunity.</p>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> ScholarBridge Kenya. All rights reserved.</span>
+      <span>Opportunities start with you.</span>
+    </div>
+  </footer>
+</body>
+</html>
