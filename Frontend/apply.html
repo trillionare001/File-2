@@ -16,17 +16,17 @@
 <body>
   <header class="site-header">
     <a class="brand" href="index.html" aria-label="Mwangaza Scholars home">
-      <span class="brand-mark">✦</span>
+      <span class="brand-mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4L12 2Z" fill="currentColor"/></svg></span>
       <span>Mwangaza <b>Scholars</b></span>
     </a>
-    <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+    <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
     <nav class="nav-links" aria-label="Main navigation">
       <a href="index.html">Home</a>
       <a href="scholarships.html">Scholarships</a>
       <a href="how-it-works.html">How it works</a>
       <a href="about.html">About</a>
       <a href="faq.html">FAQ</a>
-      <a class="nav-apply active" href="apply.html" aria-current="page">Apply now <span>↗</span></a>
+      <a class="nav-apply active" href="apply.html" aria-current="page">Apply now <span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></span></a>
     </nav>
   </header>
   <main>
@@ -34,11 +34,12 @@
       <div class="apply-copy">
         <span class="eyebrow">YOUR JOURNEY STARTS HERE</span>
         <h1>Complete your scholarship profile</h1>
-        <p>Follow three simple steps to outline your details, study preferences and supporting documents.</p>
+        <p>Follow four simple steps to share your details, study preferences, documents and M-Pesa payment reference.</p>
         <div class="apply-points">
           <span>01 — Your contact details</span>
           <span>02 — Your study preferences</span>
           <span>03 — Your supporting documents</span>
+          <span>04 — M-Pesa payment</span>
         </div>
       </div>
       <div class="application-panel">
@@ -49,25 +50,26 @@
           <li class="is-current" aria-current="step"><span>1</span><small>Your details</small></li>
           <li><span>2</span><small>Study preferences</small></li>
           <li><span>3</span><small>Documents</small></li>
+          <li><span>4</span><small>Payment</small></li>
         </ol>
         <p class="wizard-error configuration-error" id="supabase-config-error" role="alert" hidden></p>
         <form class="apply-form" id="interest-form" novalidate>
           <section class="application-step" data-step="0" aria-labelledby="step-title-1">
-            <p class="step-number">STEP 1 OF 3</p>
+            <p class="step-number">STEP 1 OF 4</p>
             <h2 id="step-title-1" tabindex="-1">Your details</h2>
             <p class="step-description">Start with the best way to identify and contact you.</p>
-            <label for="full-name">Full name</label>
+            <label for="full-name">Full name <span class="required-indicator" aria-hidden="true">*</span></label>
             <input id="full-name" name="name" type="text" autocomplete="name" placeholder="Enter your full name" required>
-            <label for="email">Email address</label>
+            <label for="email">Email address <span class="required-indicator" aria-hidden="true">*</span></label>
             <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
             <label for="phone">Phone number <span class="optional-label">Optional</span></label>
             <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+254">
           </section>
           <section class="application-step" data-step="1" aria-labelledby="step-title-2" hidden>
-            <p class="step-number">STEP 2 OF 3</p>
+            <p class="step-number">STEP 2 OF 4</p>
             <h2 id="step-title-2" tabindex="-1">Study preferences</h2>
             <p class="step-description">Tell us what kind of study opportunity you are looking for.</p>
-            <label for="field">Area of expertise</label>
+            <label for="field">Area of expertise <span class="required-indicator" aria-hidden="true">*</span></label>
             <select id="field" name="field" required>
               <option value="">Select your field</option>
               <option>Information Technology</option>
@@ -78,12 +80,17 @@
               <option>Arts &amp; Humanities</option>
               <option>Receptionists</option>
               <option>Catering</option>
-              <option>Health care assistant></option>
+              <option>Health care assistant</option>
               <option>Caregiver</option>
               <option>Sales and marketing</option>
+              <option>Beauty therapy</option>
+              <option>Hospitality and Tourism management</option>
+              <option>Barista</option>
+              <option>Driving</option>
+              <option>Plumbing</option>
               <option>Other</option>
             </select>
-            <label for="level">Preferred study level</label>
+            <label for="level">Preferred study level <span class="required-indicator" aria-hidden="true">*</span></label>
             <select id="level" name="level" required>
               <option value="">Select study level</option>
               <option>Undergraduate</option>
@@ -94,39 +101,97 @@
             <label for="course">Preferred course or programme <span class="optional-label">Optional</span></label>
             <input id="course" name="course" type="text" placeholder="For example, environmental science">
             <label for="destination">Preferred study destination <span class="optional-label">Optional</span></label>
-            <input id="destination" name="destination" type="text" placeholder="Country or region">
+            <select id="destination" name="destination">
+              <option value="">Select a country</option>
+              <option>United Kingdom</option>
+              <option>Germany</option>
+              <option>Canada</option>
+              <option>Netherlands</option>
+              <option>Australia</option>
+              <option>Sweden</option>
+              <option>France</option>
+              <option>China</option>
+              <option>USA</option>
+            </select>
           </section>
           <section class="application-step" data-step="2" aria-labelledby="step-title-3" hidden>
-            <p class="step-number">STEP 3 OF 3</p>
+            <p class="step-number">STEP 3 OF 4</p>
             <h2 id="step-title-3" tabindex="-1">Supporting documents</h2>
-            <p class="step-description">Add your CV or transcript if available. Check the scholarship provider's instructions for required documents.</p>
-            <label for="cv">CV or résumé <span class="optional-label">Optional</span></label>
-            <input id="cv" name="cv" type="file" accept=".pdf,.doc,.docx">
+            <p class="step-description">Upload your CV or résumé to continue. Check the scholarship provider's instructions for any additional required documents.</p>
+            <label for="cv">CV or résumé <span class="required-indicator" aria-hidden="true">*</span></label>
+            <input id="cv" name="cv" type="file" accept=".pdf,.doc,.docx" required>
             <p class="field-help">PDF, DOC or DOCX; maximum 5 MB.</p>
             <label for="transcript">Academic transcript <span class="optional-label">Optional</span></label>
             <input id="transcript" name="transcript" type="file" accept=".pdf,.doc,.docx">
             <p class="field-help">PDF, DOC or DOCX; maximum 5 MB.</p>
+            <aside class="fee-notice" aria-labelledby="fee-notice-title">
+              <span class="eyebrow">PLEASE READ BEFORE PAYMENT</span>
+              <h3 id="fee-notice-title">MWANGAZA SCHOLARS – APPLICATION PROCESSING FEE NOTICE</h3>
+              <p>Dear Applicant,</p>
+              <p>Congratulations on completing your application profile. At Mwangaza Scholars, we are committed to helping Kenyan students access international education opportunities and guiding them throughout their application journey.</p>
+              <p>A <strong>KSh 5,000 Application Processing &amp; Facilitation Fee</strong> is payable upon submission of your interest form to initiate review, verification and processing procedures.</p>
+              <h4>What the fee covers</h4>
+              <p>The application processing and facilitation fee covers administrative processing and assistance with:</p>
+              <ul>
+                <li>Student visa application guidance and processing support.</li>
+                <li>Travel arrangements and flight ticket facilitation.</li>
+                <li>Scholarship application documentation and submission assistance.</li>
+                <li>Guidance throughout the admission and scholarship process.</li>
+                <li>Ongoing support and coordination throughout your application journey.</li>
+              </ul>
+              <h4>Important notice – refund policy</h4>
+              <ul>
+                <li>The KSh 5,000 processing fee is payable upon application.</li>
+                <li>All interest submissions undergo review and selection by Mwangaza Scholars.</li>
+                <li>Applicants who are not selected to proceed will receive a full refund of the KSh 5,000 fee.</li>
+                <li>Refunds for unsuccessful applicants will be processed within 48 hours after official communication of the selection outcome.</li>
+                <li>Successful applicants will receive official communication outlining the subsequent steps in their scholarship application journey.</li>
+              </ul>
+              <p>Thank you for choosing Mwangaza Scholars. We look forward to supporting your journey towards international education opportunities.</p>
+              <strong>MWANGAZA SCHOLARS</strong>
+            </aside>
+          </section>
+          <section class="application-step" data-step="3" aria-labelledby="step-title-4" hidden>
+            <p class="step-number">STEP 4 OF 4</p>
+            <h2 id="step-title-4" tabindex="-1">M-Pesa payment</h2>
+            <p class="step-description">Pay the processing fee, then enter the transaction code from your M-Pesa confirmation message.</p>
+            <div class="mpesa-instructions" role="note">
+              <span class="eyebrow">M-PESA BUY GOODS</span>
+              <p><strong>Business name:</strong> OCA COMMS</p>
+              <p><strong>Till number:</strong> <b>8028258</b></p>
+              <p><strong>Amount:</strong> <b>KSh 5,000</b></p>
+              <p>Please use these payment details and retain your M-Pesa transaction confirmation message for verification.</p>
+            </div>
+            <label for="payment-reference">M-Pesa transaction code <span class="required-indicator" aria-hidden="true">*</span></label>
+            <input id="payment-reference" name="payment_reference" type="text" autocomplete="off" minlength="8" maxlength="20" pattern="[A-Za-z0-9]{8,20}" placeholder="Enter the code from your M-Pesa message" aria-describedby="payment-reference-help" required>
+            <p class="field-help" id="payment-reference-help">Enter the transaction code exactly as shown in your confirmation message.</p>
+            <label class="payment-confirmation">
+              <input name="payment-made" type="checkbox" required>
+              I have completed the KSh 5,000 payment and will retain the M-Pesa confirmation message.
+              <span class="required-indicator" aria-hidden="true">*</span>
+            </label>
+            <p class="field-help">Your reference will be recorded as pending manual verification. Submitting this form does not confirm that payment has been received.</p>
           </section>
           <p class="wizard-error" role="alert" hidden></p>
           <div class="wizard-controls">
             <button class="button button-secondary" type="button" data-step-back hidden>Back</button>
-            <button class="button button-primary" type="button" data-step-next>Save and continue <span>→</span></button>
-            <button class="button button-primary" type="submit" data-step-submit hidden>Submit interest <span>→</span></button>
+            <button class="button button-primary" type="button" data-step-next>Save and continue <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></button>
+            <button class="button button-primary" type="submit" data-step-submit hidden>Submit for review <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></button>
           </div>
           <p class="submission-status" role="status" aria-live="polite"></p>
-          <p class="form-note">This interest form is not an official scholarship application. Check the provider's requirements and submit official applications through its own channel. If your application is successful, a $39.99 fee will be due. Do not upload identity documents.</p>
+          <p class="form-note">This interest form is not an official scholarship application. Check the provider's requirements and submit official applications through its own channel. Review the KSh 5,000 fee and refund terms in the documents step before payment. Do not upload identity documents.</p>
         </form>
         <div class="application-complete" id="application-complete" role="status" hidden>
-          <span class="completion-mark" aria-hidden="true">✓</span>
-          <h2 tabindex="-1">Interest submitted</h2>
-          <p>Your interest form was submitted successfully. We’ll email you if your application is successful. If successful, a $39.99 fee will be due.</p>
-          <a class="button button-primary" href="scholarships.html">Explore study fields <span>→</span></a>
+          <span class="completion-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></svg></span>
+          <h2 tabindex="-1">Submission received</h2>
+          <p>Your interest form and M-Pesa transaction reference have been received. Payment is pending manual verification; this is not confirmation that funds have been received. Keep your M-Pesa confirmation message. We will contact you with the review outcome. If you are not selected to proceed, the KSh 5,000 fee will be refunded within 48 hours after official communication of the outcome.</p>
+          <a class="button button-primary" href="scholarships.html">Explore study fields <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></a>
         </div>
       </div>
     </section>
   </main>
   <footer class="footer">
-    <a class="brand footer-brand" href="index.html"><span class="brand-mark">✦</span><span>Mwangaza <b>Scholars</b></span></a>
+    <a class="brand footer-brand" href="index.html"><span class="brand-mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4L12 2Z" fill="currentColor"/></svg></span><span>Mwangaza <b>Scholars</b></span></a>
     <p>Empowering Kenyan talent for a world of opportunity.</p>
     <div class="footer-bottom">
       <span>© <span id="year"></span> Mwangaza Scholars. All rights reserved.</span>

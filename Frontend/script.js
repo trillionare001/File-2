@@ -167,11 +167,15 @@ if (interestForm) {
       });
     }
 
-    if (step === 3) {
+    if (step >= 3) {
       Object.assign(data, {
         cv_path: filePaths.cv || null,
         transcript_path: filePaths.transcript || null
       });
+    }
+
+    if (step === 4) {
+      data.payment_reference = formData.get('payment_reference').trim();
     }
 
     const { error } = await supabaseClient
@@ -235,7 +239,7 @@ if (interestForm) {
     }
 
     submitButton.disabled = true;
-    submissionStatus.textContent = 'Saving your interest and documents...';
+    submissionStatus.textContent = 'Saving your interest, documents and payment reference...';
     errorMessage.hidden = true;
 
     const safeFileName = fileName =>
@@ -271,6 +275,7 @@ if (interestForm) {
         }
 
         await saveProgress(3);
+        await saveProgress(4);
 
         if (!recordSaved) {
           const formData = new FormData(interestForm);
@@ -287,7 +292,8 @@ if (interestForm) {
               course: formData.get('course').trim() || null,
               destination: formData.get('destination').trim() || null,
               cv_path: filePaths.cv || null,
-              transcript_path: filePaths.transcript || null
+              transcript_path: filePaths.transcript || null,
+              payment_reference: formData.get('payment_reference').trim()
             });
 
           if (error) {

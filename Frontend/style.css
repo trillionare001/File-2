@@ -69,7 +69,12 @@ a {
   border-radius: 12px;
   background: var(--navy);
   color: white;
-  font-size: 21px;
+}
+
+.brand-mark svg {
+  width: 21px;
+  height: 21px;
+  fill: currentColor;
 }
 
 .nav-links {
@@ -94,15 +99,50 @@ a {
 }
 
 .nav-apply span {
+  display: inline-flex;
+  align-items: center;
   margin-left: 10px;
+}
+
+.nav-apply span svg {
+  display: block;
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .menu-toggle {
   display: none;
   border: 0;
   background: none;
-  font-size: 25px;
   color: var(--navy);
+}
+
+.menu-toggle svg {
+  display: block;
+  width: 25px;
+  height: 25px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+.icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+  vertical-align: middle;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 /* HERO SECTION */
@@ -178,7 +218,7 @@ a {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  gap: 17px;
+  gap: 10px;
   padding: 14px 22px;
   border-radius: 30px;
   font: 700 13px "DM Sans", sans-serif;
@@ -211,9 +251,17 @@ a {
 }
 
 .note-icon {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
   color: var(--green);
-  font-weight: 900;
   margin-right: 8px;
+  vertical-align: middle;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 /* HERO IMAGE */
@@ -287,6 +335,12 @@ a {
   place-items: center;
 }
 
+.caption-icon svg {
+  width: 17px;
+  height: 17px;
+  fill: currentColor;
+}
+
 .photo-caption b,
 .photo-caption small {
   display: block;
@@ -346,9 +400,29 @@ a {
   background: white;
 }
 
-.career-card > span {
+.career-card-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  transition: transform .2s, border-color .2s, box-shadow .2s;
+}
+
+.career-card-link:hover,
+.career-card-link:focus-visible {
+  transform: translateY(-4px);
+  border-color: #a9d7c2;
+  box-shadow: 0 12px 25px #1d35540b;
+}
+
+.career-card-link:hover h3,
+.career-card-link:focus-visible h3 {
   color: var(--green);
-  font-size: 24px;
+}
+
+.career-card > .icon {
+  width: 25px;
+  height: 25px;
+  color: var(--green);
 }
 
 .career-card h3 {
@@ -369,6 +443,63 @@ a {
   font-size: 11px;
   line-height: 1.7;
   text-align: center;
+}
+
+.career-list-link {
+  display: flex;
+  width: fit-content;
+  margin: 20px auto 0;
+}
+
+.jobs-list {
+  grid-template-columns: repeat(3, 1fr);
+  padding: 0;
+  list-style: none;
+}
+
+.jobs-list > li {
+  min-width: 0;
+}
+
+.jobs-list .career-card {
+  display: block;
+  min-height: 165px;
+  height: 100%;
+  color: inherit;
+  transition: transform .2s, border-color .2s, box-shadow .2s;
+}
+
+.jobs-list .job-link {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.jobs-list .job-link:hover,
+.jobs-list .job-link:focus-visible {
+  transform: translateY(-4px);
+  border-color: #a9d7c2;
+  box-shadow: 0 12px 25px #1d35540b;
+}
+
+.jobs-list .job-link:hover h3,
+.jobs-list .job-link:focus-visible h3 {
+  color: var(--green);
+}
+
+.jobs-list .job-number {
+  display: inline-grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border-radius: 10px;
+  background: var(--mint);
+  color: var(--green);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.jobs-list .career-card h3 {
+  margin-top: 15px;
 }
 
 /* BENEFITS */
@@ -539,8 +670,9 @@ a {
   box-shadow: 0 12px 25px #1d35540b;
 }
 
-.field-card > span {
-  font-size: 25px;
+.field-card > .icon {
+  width: 25px;
+  height: 25px;
   color: var(--green);
 }
 
@@ -639,8 +771,19 @@ a {
   font-weight: 600;
 }
 
-.apply-points span:first-letter {
+.apply-points > span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.apply-points .icon {
   color: var(--green);
+}
+
+.more-fields .icon {
+  width: 14px;
+  height: 14px;
 }
 
 /* APPLICATION FORM */
@@ -663,7 +806,7 @@ a {
 
 .application-progress {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 8px;
   margin: 0 0 14px;
   padding: 0;
@@ -714,6 +857,70 @@ a {
   margin-bottom: 8px;
 }
 
+.fee-notice,
+.mpesa-instructions {
+  margin: 20px 0;
+  padding: 18px;
+  border: 1px solid #dce8e2;
+  border-radius: 12px;
+  background: #f7fbf9;
+}
+
+.apply-form .fee-notice h3 {
+  margin: 8px 0 14px;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.fee-notice h4 {
+  margin: 16px 0 6px;
+  color: var(--navy);
+  font-size: 12px;
+}
+
+.fee-notice p,
+.fee-notice li,
+.mpesa-instructions p {
+  color: #526176;
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.fee-notice p {
+  margin: 8px 0;
+}
+
+.fee-notice ul {
+  margin: 6px 0;
+  padding-left: 20px;
+}
+
+.mpesa-instructions {
+  border-color: #b8dfcc;
+  background: var(--mint);
+}
+
+.mpesa-instructions p {
+  margin: 8px 0;
+}
+
+.payment-confirmation {
+  display: flex !important;
+  align-items: flex-start;
+  gap: 9px;
+  margin: 15px 0 6px !important;
+  line-height: 1.6;
+}
+
+.apply-form .payment-confirmation input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 0;
+  accent-color: var(--green);
+}
+
 .step-description,
 .apply-prompt > p {
   margin: 0 0 16px;
@@ -727,6 +934,11 @@ a {
   color: var(--muted);
   font-size: 10px;
   font-weight: 500;
+}
+
+.required-indicator {
+  margin-left: 2px;
+  color: #a32626;
 }
 
 .field-help {
@@ -812,6 +1024,16 @@ a {
   background: var(--mint);
   color: var(--green);
   font-size: 19px;
+}
+
+.completion-mark svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .application-complete h2 {
